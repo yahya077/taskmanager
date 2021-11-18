@@ -2,11 +2,11 @@
 
 namespace App\Http\Requests\Api;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class RegisterRequest extends FormRequest
+class ProjectRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,18 +26,18 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:4',
-            'email' => 'required|email',
-            'password' => 'required|min:5',
+            'title' => 'required|min:4',
+            'description' => 'required',
+            'user_id' => 'required,exist:users'
         ];
     }
 
     public function attributes()
     {
         return [
-            'name' => __('api/auth.fields.name'),
-            'email' => __('front/auth.fields.email'),
-            'password' => __('front/auth.fields.phone'),
+            'title' => __('api/project.fields.title'),
+            'description' => __('front/project.fields.description'),
+            'user_id' => __('front/project.fields.user_id'),
         ];
     }
 

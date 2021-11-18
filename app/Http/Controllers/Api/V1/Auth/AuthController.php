@@ -43,7 +43,7 @@ class AuthController extends Controller
      */
     public function user()
     {
-        return response()->success('User loaded',auth('api')->user(),200);
+        return response()->success('User loaded',auth()->user(),200);
     }
 
     /**
@@ -52,7 +52,7 @@ class AuthController extends Controller
     function authenticate($request)
     {
         if (auth()->attempt(['email' => $request->email, 'password' => $request->password])) {
-            return response()->success('Successfully Loggedin',['token' => $this->getToken(auth('api')->user())],201);
+            return response()->success('Successfully Loggedin',['token' => $this->getToken(auth()->user())],201);
         } else {
             return response()->error('Unauthorised',[],401);
         }
