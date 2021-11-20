@@ -51,11 +51,10 @@ class AuthController extends Controller
      */
     function authenticate($request)
     {
-        if (auth()->attempt(['email' => $request->email, 'password' => $request->password])) {
+        if (auth()->attempt(['email' => $request->email, 'password' => $request->password]))
             return response()->success('Successfully Loggedin',['token' => $this->getToken(auth()->user())],201);
-        } else {
-            return response()->error('Unauthorised',[],401);
-        }
+
+        return response()->error('Unauthorised',[],401);
     }
 
     /**
