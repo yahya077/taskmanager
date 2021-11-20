@@ -6,7 +6,6 @@ use App\Models\Project;
 use App\Models\User;
 use App\Observers\ProjectObserver;
 use App\Observers\UserObserver;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider

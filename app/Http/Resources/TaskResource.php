@@ -8,9 +8,10 @@ use Illuminate\Http\Resources\Json\JsonResource;
 /**
  * @property string title
  * @property string description
- * @property UserResource user
+ * @property UserResource assignedTo
+ * @property ProjectResource project
  */
-class ProjectResource extends JsonResource
+class TaskResource extends JsonResource
 {
     /**
      * Transform the resource collection into an array.
@@ -23,7 +24,8 @@ class ProjectResource extends JsonResource
         return [
             'title' => $this->title,
             'description' =>  $this->description,
-            'user' => new UserResource($this->user),
+            'assigned_to' => new UserResource($this->assignedTo),
+            'project' => new ProjectResource($this->project),
         ];
     }
 }

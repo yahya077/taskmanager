@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\V1\Auth\AuthController;
 use App\Http\Controllers\Api\V1\Modules\ProjectController;
+use App\Http\Controllers\Api\V1\Modules\TaskController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
@@ -21,7 +22,6 @@ Route::prefix('v1')->group(function () {
         });
     });
 
-    //project routes
     Route::apiResource('projects', ProjectController::class);
-
+    Route::apiResource('tasks', TaskController::class);
 });

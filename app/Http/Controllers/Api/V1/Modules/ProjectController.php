@@ -7,7 +7,6 @@ use App\Http\Requests\Api\ProjectRequest;
 use App\Http\Resources\ProjectResource;
 use App\Models\Project;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
@@ -30,7 +29,7 @@ class ProjectController extends Controller
     {
         $project = Project::create($request->all());
 
-        return response(['success' => true, 'data'=> $project]);
+        return response(['success' => true, 'data'=>  new ProjectResource($project)]);
     }
 
 

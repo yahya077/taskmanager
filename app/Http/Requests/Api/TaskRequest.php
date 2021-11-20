@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class ProjectRequest extends FormRequest
+class TaskRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,16 +28,19 @@ class ProjectRequest extends FormRequest
         return [
             'title' => 'required|min:4',
             'description' => 'required',
-            'user_id' => 'required|exists:users'
+            'assigned_to' => 'required|exists:users,id',
+            'project_id' => 'required|exists:projects,id'
+
         ];
     }
 
     public function attributes()
     {
         return [
-            'title' => __('api/project.fields.title'),
-            'description' => __('api/project.fields.description'),
-            'user_id' => __('api/project.fields.user_id'),
+            'title' => __('api/task.fields.title'),
+            'description' => __('api/task.fields.description'),
+            'assigned_to' => __('api/task.fields.assigned_to'),
+            'project_id' => __('api/task.fields.project_id'),
         ];
     }
 

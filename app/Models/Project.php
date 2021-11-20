@@ -21,7 +21,7 @@ class Project extends Model
     ];
 
     /**
-     * Get the phone associated with the user.
+     * Get the user associated with the project.
      */
     public function user()
     {
